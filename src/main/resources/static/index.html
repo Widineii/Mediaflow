@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediaFlow</title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="topo">
+<header class="topbar">
+    <a class="brand" href="#topo" aria-label="MediaFlow início">
+        <span class="brand-mark">MF</span>
+        <span>
+            <strong>MediaFlow</strong>
+            <small>games, mangás e streaming</small>
+        </span>
+    </a>
+
+    <div class="top-actions">
+        <nav class="nav-tabs" aria-label="Categorias">
+            <button class="tab active" data-filter="todos">Tudo</button>
+            <button class="tab" data-filter="jogo">Jogos</button>
+            <button class="tab" data-filter="retro">Game Retrô</button>
+            <button class="tab" data-filter="manga">Mangás</button>
+            <button class="tab" data-filter="filme">Filmes</button>
+            <button class="tab" data-filter="serie">Séries</button>
+        </nav>
+        <button class="profile-button" id="profileButton" type="button" aria-label="Abrir perfil">
+            <span id="profileInitial">+</span>
+        </button>
+    </div>
+</header>
+
+<section class="profile-panel" id="profilePanel" aria-label="Criar perfil" hidden>
+    <div class="profile-card">
+        <div class="profile-header">
+            <p class="eyebrow">Perfil</p>
+            <h2 id="profileTitle">Entrar ou cadastrar</h2>
+            <p id="profileText">Entre para ver suas curtidas e continuar sua lista.</p>
+        </div>
+
+        <div class="auth-tabs" id="authTabs">
+            <button class="auth-tab active" type="button" data-auth-mode="login">Entrar</button>
+            <button class="auth-tab" type="button" data-auth-mode="signup">Cadastrar</button>
+        </div>
+
+        <form id="profileForm" class="auth-form">
+            <label>
+                <span>Nome</span>
+                <input id="profileName" type="text" maxlength="24" placeholder="Seu nome">
+            </label>
+            <label>
+                <span>Gosto principal</span>
+                <select id="profileTaste">
+                    <option value="Jogos">Jogos</option>
+                    <option value="Mangas">Mangás</option>
+                    <option value="Filmes">Filmes</option>
+                    <option value="Series">Séries</option>
+                </select>
+            </label>
+            <div class="profile-actions">
+                <button class="primary-action" id="profileSubmit" type="submit">Entrar</button>
+                <button class="ghost-button" id="closeProfile" type="button">Fechar</button>
+            </div>
+        </form>
+
+        <section class="liked-panel" id="likedPanel" hidden>
+            <div class="liked-head">
+                <strong>Suas curtidas</strong>
+                <button class="ghost-button small-button" id="logoutProfile" type="button">Sair</button>
+            </div>
+            <div class="liked-list" id="likedList"></div>
+        </section>
+    </div>
+</section>
+
+<section class="detail-panel" id="detailPanel" aria-label="Detalhes do item" hidden>
+    <article class="detail-card" id="detailCard"></article>
+</section>
+
+<main>
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">Catálogo atualizado para PC, Xbox, PS5, anime e streaming</p>
+            <h1>MediaFlow</h1>
+            <p>Um portal para acompanhar jogos, game retrô, mangás, filmes e séries com ficha rápida, onde assistir, onde comprar, lançamentos e itens salvos.</p>
+            <div class="hero-actions">
+                <a href="#catalogo" class="primary-action">Ver guias</a>
+                <a href="#destaques" class="ghost-action">Ver destaques</a>
+            </div>
+        </div>
+
+        <div class="spotlight-stack" id="destaques" aria-label="Destaques">
+            <article class="spotlight spotlight-large">
+                <span>Resumo do portal</span>
+                <strong>Guia completo de entretenimento</strong>
+                <p>Compare jogos, acompanhe lançamentos e descubra onde assistir suas séries e filmes.</p>
+            </article>
+            <div class="mini-spotlights">
+                <article class="spotlight">
+                    <span>Catálogo</span>
+                    <strong>1.500 itens</strong>
+                </article>
+                <article class="spotlight">
+                    <span>Perfil</span>
+                    <strong>Curtidas salvas</strong>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-strip" aria-label="Resumo informativo">
+        <article>
+            <span>Guia do dia</span>
+            <strong>Preços, plataformas e links reunidos</strong>
+            <p>Compare jogos, descubra onde assistir filmes e séries, ou monte sua lista de curtidas.</p>
+        </article>
+        <article>
+            <span>Lançamentos</span>
+            <strong>Agenda e fontes</strong>
+            <p>Veja itens que estão chegando e abra a fonte para conferir mais detalhes.</p>
+        </article>
+        <article>
+            <span>Curadoria</span>
+            <strong>Catálogo com contexto</strong>
+            <p>Cada card traz categoria, gênero, plataforma, nota e ação principal.</p>
+        </article>
+    </section>
+
+    <section class="quick-categories" aria-label="Atalhos">
+        <button data-filter-shortcut="jogo"><span>Jogos</span><strong>PC, Xbox, PS5</strong></button>
+        <button data-filter-shortcut="retro"><span>Retrô</span><strong>Clássicos e nostalgia</strong></button>
+        <button data-filter-shortcut="manga"><span>Mangás</span><strong>Coleções e volumes</strong></button>
+        <button data-filter-shortcut="filme"><span>Filmes</span><strong>Compra e streaming</strong></button>
+        <button data-filter-shortcut="serie"><span>Séries</span><strong>Maratonas</strong></button>
+    </section>
+
+    <section class="collection-rails" aria-label="Coleções">
+        <button class="collection-card" type="button" id="dealsCard">
+            <span>Promoções</span>
+            <strong>Ofertas para garimpar hoje</strong>
+            <p>Itens com desconto, preço antigo e selo de destaque.</p>
+        </button>
+        <article class="collection-card">
+            <span>Universo gamer</span>
+            <strong>Ação, RPG, corrida e esporte</strong>
+            <p>PC, Xbox e PS5 juntos no mesmo catálogo.</p>
+        </article>
+        <article class="collection-card">
+            <span>Anime e manga</span>
+            <strong>Shonen, fantasia e coleções famosas</strong>
+            <p>Uma prateleira maior para ir enchendo aos poucos.</p>
+        </article>
+    </section>
+
+    <section class="toolbar" id="catalogo">
+        <label class="search-box">
+            <span>Buscar no catálogo</span>
+            <input id="searchInput" type="search" placeholder="Elden Ring, One Piece, Duna...">
+        </label>
+        <div class="platform-buttons" aria-label="Filtro rápido por plataforma">
+            <span id="quickFilterLabel">Jogos</span>
+            <div>
+                <button class="platform-chip active" type="button" data-platform="todos">Todos</button>
+                <button class="platform-chip" type="button" data-platform="PC">PC</button>
+                <button class="platform-chip" type="button" data-platform="Xbox">Xbox</button>
+                <button class="platform-chip" type="button" data-platform="PS5">PS5</button>
+            </div>
+        </div>
+        <label class="select-box">
+            <span>Plataforma</span>
+            <select id="platformFilter">
+                <option value="todos">Todas</option>
+                <option value="PC">PC</option>
+                <option value="Xbox">Xbox</option>
+                <option value="PS5">PS5</option>
+                <option value="Streaming">Streaming</option>
+                <option value="Digital">Digital</option>
+            </select>
+        </label>
+        <label class="select-box">
+            <span>Lançamentos</span>
+            <select id="releaseFilter">
+                <option value="todos">Todos</option>
+                <option value="2026">Jogos, filmes e séries de 2026</option>
+            </select>
+        </label>
+        <label class="select-box">
+            <span>Gênero</span>
+            <select id="genreFilter">
+                <option value="todos">Todos</option>
+            </select>
+        </label>
+        <label class="select-box">
+            <span>Ordenar</span>
+            <select id="sortFilter">
+                <option value="destaque">Destaque</option>
+                <option value="menor-preco">Menor preço</option>
+                <option value="maior-nota">Maior nota</option>
+                <option value="maior-desconto">Maior desconto</option>
+            </select>
+        </label>
+    </section>
+
+    <section class="stats" aria-label="Resumo">
+        <div><strong id="totalItems">0</strong><span>itens filtrados</span></div>
+        <div><strong id="bestDeal">0%</strong><span>maior desconto</span></div>
+        <div><strong id="favoriteCount">0</strong><span>favoritos</span></div>
+        <div><strong id="categoryCount">5</strong><span>tipos no catálogo</span></div>
+    </section>
+
+    <section class="radar-board" aria-label="Radar MediaFlow">
+        <article>
+            <p class="eyebrow">Radar</p>
+            <h2>Atualizações rápidas</h2>
+            <div class="news-list" id="newsList"></div>
+        </article>
+        <article>
+            <p class="eyebrow">Ranking</p>
+            <h2>Top da plataforma</h2>
+            <div class="ranking-list" id="rankingList"></div>
+        </article>
+    </section>
+
+    <section class="section-heading">
+        <div>
+            <p class="eyebrow">Guia</p>
+            <h2>Catálogo informativo</h2>
+        </div>
+        <span id="resultLabel">Carregando itens e lojas...</span>
+    </section>
+
+    <section class="catalog-grid" id="catalogGrid" aria-live="polite"></section>
+
+    <div class="load-more-wrap">
+        <button class="ghost-button" id="loadMoreButton" type="button">Carregar mais</button>
+    </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
